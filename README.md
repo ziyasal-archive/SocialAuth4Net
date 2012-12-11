@@ -5,3 +5,8 @@ OAuth authentication wrapper for popular social platforms included that
  <li>Facebook</li>
  <li>LinkedIn</li>
  <li>Twitter</li> 
+ <br/>
+ <ul>
+ <li><a href="https://github.com/ziyasal/SocialAuth4Net/wiki">Documentation</a></li>
+  <li><a href="https://nuget.org/packages/SocialAuth4Net">NuGet Package</a></li>
+  </ul>
