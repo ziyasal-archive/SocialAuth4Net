@@ -1,0 +1,20 @@
+﻿ <add key="Li-ApiKey" value="vq88jtmd78cn" />
+ <add key="Li-ApiSecret" value="cJfMwkla7PI7fH6P" />
+ 
+ <add key="Fb-ApiKey" value="313964021985748"/>
+ <add key="Fb-ApiSecret" value="c2223548e5b1f9f78b5449f49f2b45ba"/>
+ <add key="Fb-RedirectUri" value="http://fbl.yenibiris.com/facebook/authenticate"/>
+
+ ##################################################################################################################################
+
+  <section name="socialAuthSettings" type="Yenibiris.Library.SocialAuth.Configuration.SocialAuthConfigSectionHandler, Yenibiris.Library.SocialAuth, Version=1.0.0.0, Culture=neutral"/>
+  
+  <socialAuthSettings log="False" isActive="True">
+    <authenticatorSettings>
+      <add name="Li-ApiKey" value="vq88jtmd78cn" />
+      <add name="Li-ApiSecret" value="cJfMwkla7PI7fH6P" />
+      <add name="Fb-ApiKey" value="313964021985748"/>
+      <add name="Fb-ApiSecret" value="c2223548e5b1f9f78b5449f49f2b45ba"/>
+      <add name="Fb-RedirectUri" value="http://local.yenibiris.com/Social/Facebook.aspx"/>
+    </authenticatorSettings>
+  </socialAuthSettings>

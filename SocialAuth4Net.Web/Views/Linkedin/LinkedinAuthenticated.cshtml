@@ -1,0 +1,50 @@
+﻿@model LinkedIn.OAuth.Model.LinkedInProfile
+
+@{
+    ViewBag.Title = "LinkedinAuthenticated";
+}
+
+<h2>LinkedinAuthenticated</h2>
+
+<fieldset>
+    <legend>LinkedInProfile</legend>
+
+    <div class="display-label">Firstname</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Firstname)
+    </div>
+
+    <div class="display-label">Lastname</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Lastname)
+    </div>
+
+    <div class="display-label">UserId</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UserId)
+    </div>
+
+    <div class="display-label">Headline</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Headline)
+    </div>
+
+    <div class="display-label">Industry</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Industry)
+    </div>
+
+    <div class="display-label">Distance</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Distance)
+    </div>
+
+    <div class="display-label">Summary</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Summary)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
