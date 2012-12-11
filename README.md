@@ -1,7 +1,7 @@
 SocialAuth4Net
 ==============
-
-#SocialAuth4Net is oauth authentication wrapper for popular social platforms included that 
- *Facebook
- *LinkedIn 
- *Twitter
+OAuth authentication wrapper for popular social platforms included that 
+ <ul>
+ <li>Facebook</li>
+ <li>LinkedIn</li>
+ <li>Twitter</li> 
