@@ -9,13 +9,13 @@ namespace SocialAuth4Net.Web.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.UrlParameters = OAuthManager.GetUrlParametersFor<FacebookAuthenticator>(string.Empty);
+            ViewBag.UrlParameters = OAuthManager.GetUrlParametersUsing<FacebookAuthenticator>(string.Empty);
             return View();
         }
 
         public ActionResult Authenticate()
         {
-            FacebookProfile facebookProfile = OAuthManager.GetAuthenticatedProfileForFacebook(Request.QueryString);
+            FacebookProfile facebookProfile = OAuthManager.GetAuthenticatedProfileForFacebook(Request);
             if (!string.IsNullOrEmpty(facebookProfile.id))
             {
                 return Content(facebookProfile.id + "<br/>" + facebookProfile.first_name + "<br/>" +

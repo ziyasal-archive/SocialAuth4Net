@@ -10,7 +10,7 @@ namespace SocialAuth4Net.Web.Controllers
 
         public ActionResult Index()
         {
-            ViewBag.UrlParameters = OAuthManager.GetUrlParametersFor<LinkedInAuthenticator>(string.Empty);
+            ViewBag.UrlParameters = OAuthManager.GetUrlParametersUsing<LinkedInAuthenticator>(string.Empty);
             return View();
         }
 
@@ -18,7 +18,7 @@ namespace SocialAuth4Net.Web.Controllers
         public ActionResult LinkedinAuthenticated()
         {
             ViewResult result = View("LinkedinError");
-            LinkedInProfile linkedInProfile = OAuthManager.GetAuthenticatedProfileForLinkedIn(Request.QueryString);
+            LinkedInProfile linkedInProfile = OAuthManager.GetAuthenticatedProfileForLinkedIn(Request);
 
             if (linkedInProfile != null)
             {

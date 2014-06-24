@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Web;
 using Facebook;
-using SocialAuth4Net.Hepler;
+using SocialAuth4Net.Helper;
 using SocialAuth4Net.Struct;
 
 namespace SocialAuth4Net.Authenticators

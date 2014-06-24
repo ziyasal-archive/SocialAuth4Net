@@ -9,17 +9,16 @@ namespace SocialAuth4Net.Web.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.UrlParameters = OAuthManager.GetUrlParametersFor<TwitterAuthenticator>(string.Empty);
+            ViewBag.UrlParameters = OAuthManager.GetUrlParametersUsing<TwitterAuthenticator>(string.Empty);
             return View();
         }
 
         public ActionResult Authenticate()
         {
-            TwitterBasicProfile twitterBasicProfile = OAuthManager.GetAuthenticatedProfileForTwitter(Request.QueryString);
+            TwitterBasicProfile twitterBasicProfile = OAuthManager.GetAuthenticatedProfileForTwitter(Request);
             if (!string.IsNullOrEmpty(twitterBasicProfile.Id))
             {
-                return Content(twitterBasicProfile.Id + "<br/>" + twitterBasicProfile.ScreenName + "<br/>" +
-                        twitterBasicProfile.Description);
+                return Content(twitterBasicProfile.Id + "<br/>" + twitterBasicProfile.ScreenName + "<br/>" + twitterBasicProfile.Description);
             }
 
             return Content("");

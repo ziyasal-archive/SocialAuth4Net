@@ -1,6 +1,6 @@
 ﻿using System.Web.Script.Serialization;
 
-namespace SocialAuth4Net.Hepler
+namespace SocialAuth4Net.Helper
 {
     public static class SerilizationHelper
     {

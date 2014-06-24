@@ -1,5 +1,4 @@
-﻿using System.Collections.Specialized;
-using System.Web;
+﻿using System.Web;
 using LinkedIn.OAuth.Model;
 using SocialAuth4Net.Authenticators;
 using SocialAuth4Net.Factory;
@@ -12,23 +11,22 @@ namespace SocialAuth4Net.Manager
 {
     public static class OAuthManager
     {
-        public static string GetUrlParametersFor<TAuthenticator>(string token) where TAuthenticator : AuthenticatorBase, new()
+        public static string GetUrlParametersUsing<TAuthenticator>(string token) where TAuthenticator : AuthenticatorBase, new()
         {
-            return AuthenticatorFactory.CreateAuthenticator<TAuthenticator>(token).GetUrlParameters();
+            return AuthenticatorFactory.Create<TAuthenticator>(token).GetUrlParameters();
         }
 
-        public static FacebookProfile GetAuthenticatedProfileForFacebook(NameValueCollection queryStringCollection)
+        public static FacebookProfile GetAuthenticatedProfileForFacebook(HttpRequestBase request)
         {
             FacebookProfile result = new FacebookProfile();
 
-            if (queryStringCollection["code"] != null)
+            if (request.QueryString["code"] != null)
             {
-                string code = queryStringCollection["code"];
+                string code = request.QueryString["code"];
 
                 if (!string.IsNullOrWhiteSpace(code))
                 {
-                    IAuthenticator<FacebookProfile> authenticator =
-                        AuthenticatorFactory.CreateAuthenticator<FacebookAuthenticator>(code);
+                    IAuthenticator<FacebookProfile> authenticator = AuthenticatorFactory.Create<FacebookAuthenticator>(code);
                     result = authenticator.Authenticate();
 
                 }
@@ -37,31 +35,30 @@ namespace SocialAuth4Net.Manager
             return result;
         }
 
-        public static TwitterBasicProfile GetAuthenticatedProfileForTwitter(NameValueCollection queryStringCollection)
+        public static TwitterBasicProfile GetAuthenticatedProfileForTwitter(HttpRequestBase request)
         {
             TwitterBasicProfile result = null;
-             ITwitterOAuthManager oAuthManager = new TwitterOAuthManager();
+            ITwitterOAuthManager oAuthManager = new TwitterOAuthManager();
 
-            if (oAuthManager.CheckTwitterOAuthRequest(queryStringCollection))
+            if (oAuthManager.CheckTwitterOAuthRequest(request.QueryString))
             {
-                result= oAuthManager.Authenticate(queryStringCollection);
+                result = oAuthManager.Authenticate(request.QueryString);
             }
             return result;
         }
-        public static LinkedInProfile GetAuthenticatedProfileForLinkedIn(NameValueCollection queryStringCollection)
+        public static LinkedInProfile GetAuthenticatedProfileForLinkedIn(HttpRequestBase request)
         {
             LinkedInProfile result = new LinkedInProfile();
 
-            if (queryStringCollection["oauth_verifier"] != null && queryStringCollection["oauth_token"] != null)
+            if (request.QueryString["oauth_verifier"] != null && request.QueryString["oauth_token"] != null)
             {
 
-                string oauthVerifier = queryStringCollection["oauth_verifier"];
-                string oauthToken = queryStringCollection["oauth_token"];
+                string oauthVerifier = request.QueryString["oauth_verifier"];
+                string oauthToken = request.QueryString["oauth_token"];
 
                 if (!string.IsNullOrEmpty(oauthToken) && !string.IsNullOrEmpty(oauthVerifier))
                 {
-                    IAuthenticator<LinkedInProfile> authenticator =
-                        AuthenticatorFactory.CreateAuthenticator<LinkedInAuthenticator>(oauthToken);
+                    IAuthenticator<LinkedInProfile> authenticator = AuthenticatorFactory.Create<LinkedInAuthenticator>(oauthToken);
                     result = authenticator.Authenticate();
                 }
             }
